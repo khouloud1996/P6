@@ -1,7 +1,12 @@
-const bcrypt = require('bcrypt');
-const user = require('../models/user');
-const jwt = require('jsonwebtoken');
-exports.signup = (req, res, next) => {
+const bcrypt = require('bcrypt'); // chifferement
+const User = require('../models/User');  // model user
+const jwt = require('jsonwebtoken');   // token generator package
+
+
+
+
+
+exports.signup = (req, res, next) => {  // inscri de l'utilisateur
     bcrypt.hash(req.body.password, 10)
       .then(hash => {
         const user = new User({
