@@ -29,8 +29,7 @@ app.use(bodyParser.json());
 app.use('/images', express.static(path.join(__dirname, 'images')));  // affichage des images
 app.use('/api/sauce', sauceRoutes);
 app.use('/api/auth', userRoutes);
-app.use((req, res) => {
-  res.json({ message: 'Votre requête a bien été reçue !' }); 
+app.use((req, res) => {res.json({ message: 'Votre requête a bien été reçue !' }); 
 });
 
 module.exports = app;

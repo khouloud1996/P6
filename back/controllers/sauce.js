@@ -4,9 +4,8 @@ const fs = require('fs');   // file system, package qui permet de modifier et/ou
 
 exports.createSauce = (req, res, next) => {
     exports.sauceObject = (req, res, next) => {
-        const sauceObject = JSON.parse(req.body.sauce);
-        delete sauceObject._id;
-        delete sauceObject._userId;
+        const sauceObject = JSON.parse(req.body.sauce);  // Analyse de la requête form-data
+  
         const sauce = new Sauce({   // un nouvel objet sauce est crée avec le model Sauce
             ...sauceObject,
             userId: req.auth.userId,
@@ -97,3 +96,4 @@ exports.getAllSauce = (req, res, next) => {
   Sauce.find()   .then( sauces => res.status(200).json(sauces))
   .catch( error => res.status(400).json({ error }));
 };
+
